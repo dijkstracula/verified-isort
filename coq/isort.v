@@ -67,11 +67,12 @@ Proof.
             * Search (_ <= _ -> _ <= _ -> _ <= _). apply Nat.le_trans with (n:=x) (m:=x0) (p:=y) in test.
               apply sorted_multiple. assumption. assumption. assumption.
         (* x > x0 *)
-        + apply leb_complete_conv in test. destruct (x <=? y) as []eqn:test_2.
+        + apply leb_complete_conv in test. destruct (x <=? y) as []eqn:test_xy.
             * apply sorted_multiple. apply Nat.lt_le_incl. assumption.
-              apply sorted_multiple. apply leb_complete in test_2. assumption. assumption.
-            * apply sorted_multiple. assumption. apply leb_complete_conv in test_2. 
-Admitted.
+              apply sorted_multiple. apply leb_complete in test_xy. assumption. assumption.
+            * apply sorted_multiple. assumption. simpl in IHsorted.
+              rewrite test_xy in IHsorted. assumption.
+Qed.
 
 (* That was a gnarly proof, but, once we have it as a lemma,
  * proving that isort is correct no matter its input is actually

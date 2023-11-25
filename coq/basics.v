@@ -9,19 +9,21 @@ Definition two_times (n: nat) := 2 * n.
  * some natural number that is expressed as "S n", then n is its predecessor
  * (i.e. n-1). *)
 Compute 2 + 2.
-Compute S 17.
+Compute S (S (S 14)).
 
 (* We can evaluate those functions with an argument and 
  * get back the value we would expect. *)
 Compute twice 21.
 Compute two_times (S 17).
 
-(* How would you prove a property like this in CS 311H? *)
+(* It might be the case that if we were writing a compiler, we might want to 
+ * know for sure that it is always possible to substitute x+x for 2*x and 
+ * vice versa... How would you prove a property like this in CS 311H? *)
 Theorem twice_is_two_times: forall n, twice n = two_times n.
 Proof. 
     (* Let n be some natural number... introduces n to our context. *)
     intro n.
-    (* Apply induction on n... Our goal is now split in two! *)
+    (* Perform induction on n... Our goal is now split in two! *)
     induction n.
 
     (* Base case: *)
