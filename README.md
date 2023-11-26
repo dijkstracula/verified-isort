@@ -7,29 +7,7 @@ science department.
 
 ## Setup
 
-We'll assume that you'll be using Visual Studio Code as your editor, if you
-want to follow along on your own.
+* https://coq.inria.fr/download
+* http://dafny.org/dafny/Installation.html
 
-### Coq:
-
-Begin by installing the OCaml compiler, which is the language that Coq is
-written in.
-
-```bash
-# OSX
-$ brew install ocaml opam
-
-# Ubuntu
-$ sudo apt-get install ocaml opam
-```
-
-Then, install the latest Coq language server, which should pull in
-the latest version of Coq (as of this writing, 8.18.0):
-
-```
-$ opam install vscoq-language-server
-```
-
-### Dafny:
-
-TBD
+Visual Studio Code has good IDE integrations for both these languages.
