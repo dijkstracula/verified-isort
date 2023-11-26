@@ -39,7 +39,10 @@ method Isort(a: array<nat>)
     //                                by the end of the current loop iteration...
     //
 
-    // In particular, there's some index j on [0..n) where a[j-1] <= a[n] and a[j] > a[n].
+    // In particular, there is some j on [0..n) such that:
+    //
+    //      1. j on [1..n) when a[j-1] <= a[n] and a[j] > a[n];
+    //      2. j == 0      when a[0] > a[n].
     //
     //      0   1   2   3   4   5   6   7   8   9  10  11  12  13  14  15
     //    +---+---+---+---+---+---+---+---+---+---+---+---+---+---+---+---+
