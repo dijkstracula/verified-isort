@@ -5,6 +5,8 @@ An introduction to verified programming in Coq and Dafny in 45 minutes, for my
 group](https://sites.google.com/utexas.edu/dirp/) in the UT Austin computer
 science department.
 
+My solution is on the `solution` branch.
+
 ## Setup
 
 * https://coq.inria.fr/download

@@ -8,6 +8,7 @@
 // ghost function is a mathematical function and only exists to the verifier; if
 // we extracted this Dafny program it wouldn't appear.
 ghost function abs(n: int): int
+    // TODO: what fact should be true about the return value of abs()?
 {
     if n > 0 then n else -n
 }
@@ -16,7 +17,7 @@ ghost function abs(n: int): int
 // a branch instruction.  I certainly cannot prove that this is equivalent to
 // our abs() function, but maybe Dafny can...?
 method AbsU8(x: bv8) returns (ret: bv8)
-    ensures (ret as int) == abs(x as int)
+    // TODO: how does the return value of AbsU8 relate to the return value of abs()?
 {
     var y := x >> 8;
     ret := (x ^ y) - y;
@@ -29,7 +30,7 @@ method dec() returns (n: int)
 {
     var i := 100;
     while i > 0 
-        invariant i % 2 == 0
+        // TODO: what loop invariant does Dafny need to know about?
     {
         i := i - 2;
     }

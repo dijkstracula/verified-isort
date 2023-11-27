@@ -8,7 +8,7 @@
 // to be sorted:
 predicate sorted(a: seq<nat>)
 {
-    forall i, j :: 0 <= i < j < |a| ==> a[i] <= a[j]
+    true // TODO
 }
 
 method Isort(a: array<nat>)
@@ -68,8 +68,6 @@ method Isort(a: array<nat>)
 
     var n := 1;
     while n < a.Length
-        invariant 1 <= n <= a.Length
-        invariant sorted(a[..n])
     {
 
         var curr := a[n];
@@ -78,7 +76,6 @@ method Isort(a: array<nat>)
         // current value.
         var k := n;
         while k > 0 && a[k-1] > curr
-            invariant forall i :: k <= i < n ==> a[i] > curr
         {
             k := k-1;
         }
@@ -88,33 +85,13 @@ method Isort(a: array<nat>)
         // 2. Shift all elements between k and n to the right by one.
         var j := n-1;
         while j >= k
-            invariant j < n
-            invariant sorted(a[..k])
-            invariant sorted(a[k..n+1])
-            invariant forall i :: 0 <= i < k ==> a[i] <= curr
-            invariant forall i :: k <= i < n ==> a[i] > curr
         {
-            assert a[j+1] >= a[j];
             a[j+1] := a[j];
             j := j-1;
         }
 
-        assert forall i :: 0 <= i < k ==> a[i] <= curr;
-        assert forall i :: k <= i < n ==> a[i] > curr;
-        assert sorted(a[..k]);
-        assert sorted(a[k..n+1]);
-
         // 3. Put curr in its place!
         a[k] := curr;
-
-        assert forall i :: 0 <= i <= k ==> a[i] <= curr;
-        assert a[k] == curr;
-        assert forall i :: k < i < n ==> a[i] > curr;
-        
-        assert sorted(a[..k+1]);
-        assert sorted(a[k..n+1]);
-        assert sorted(a[..n+1]);
-
         n := n + 1;
     }
 }
